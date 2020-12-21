@@ -95,10 +95,31 @@
       .attr('class', `icon fa fa-${desc.icon}`);
     let itemContentElm = nodeItemElm.append('div')
       .attr('class', 'content');
-    itemContentElm
+
+    const defaultName = getNodeItemNamePrefix(viewNodeItem.nodeItem) + desc.name;
+    const nameElm = itemContentElm
       .append('div')
-      .attr('class', 'name')
-      .text(getNodeItemNamePrefix(viewNodeItem.nodeItem) + desc.name);
+      .attr('class', 'name');
+    if (viewNodeItem.nodeItem.label && viewNodeItem.nodeItem.label.length) {
+      nameElm.append('span')
+        .attr('class', 'name-sub')
+        .text(`(${defaultName})`);
+      nameElm.append('span')
+        .text(viewNodeItem.nodeItem.label);
+    } else {
+      nameElm.text(defaultName);
+    }
+
+    if (viewNodeItem.nodeItem.comment) {
+      itemContentElm.classed('content-with-comment', true);
+
+      itemContentElm  
+        .append('span')
+        .attr('class', 'comment-icon fa fa-info-circle');
+      itemContentElm.append('div')
+        .attr('class', 'comment-content')
+        .text(viewNodeItem.nodeItem.comment);
+    }
 
     if (desc.description) {
       itemContentElm
@@ -403,7 +424,7 @@
 
   function treeView(TreeStore, TreeSelection, TreeViewModelProvider, TreeNodeItem, TreeNode, d3, CommandContextMenu, TreeFocus) {
     return {
-      templateUrl: 'app/tree/treeView/treeView.html',
+      template: require('./treeView.html'),
       restrict: 'EA',
       replace: true,
       scope: {},

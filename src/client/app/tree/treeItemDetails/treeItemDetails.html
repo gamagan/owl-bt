@@ -4,13 +4,31 @@
       Error: Missing descriptor in project file
     </div>
     <form name="form" novalidate>
-      <fieldset ng-if="selIsDecorator()">
+      <fieldset>
         <legend>Base properties</legend>
-        <div ng-include="'app/tree/decoratorBasePropertyEditor/decoratorBasePropertyEditor.html'"></div>
-      </fieldset>
-      <fieldset ng-if="selIsService()">
-        <legend>Base properties</legend>
-        <div ng-include="'app/tree/serviceBasePropertyEditor/serviceBasePropertyEditor.html'"></div>
+        <div ng-controller="ItemBasePropertyEditorCtrl as svc">
+          <label>Label</label><input class="form-control" ng-model="svc.label"
+            ng-model-options="{ getterSetter: true, updateOn: 'blur' }"></input>
+          <label>Comment</label><textarea class="form-control" ng-model="svc.comment"
+            ng-model-options="{ getterSetter: true, updateOn: 'blur' }"></textarea>
+        </div>
+
+        <div ng-if="selIsDecorator()" ng-controller="DecoratorBasePropertyEditorCtrl as dec">
+          <div class="checkbox"><label><input type="checkbox" ng-model="dec.inverseCheckCondition"
+                ng-model-options="{ getterSetter: true }"></input>Inverse check condition</label></div>
+          <div class="checkbox"><label><input type="checkbox" ng-model="dec.periodic"
+                ng-model-options="{ getterSetter: true }"></input>Periodic check</label></div>
+        </div>
+        <div ng-if="selIsService()" ng-controller="ServiceBasePropertyEditorCtrl as svc">
+          <div class="form-group">
+            <label>Time Between Ticks</label><input type="number" class="form-control" ng-model="svc.timeBetweenTicks"
+              ng-model-options="{ getterSetter: true, updateOn: 'blur' }"></input>
+          </div>
+          <div class="form-group">
+            <label>First Tick Time</label><input type="number" class="form-control" ng-model="svc.firstTickTime"
+              ng-model-options="{ getterSetter: true, updateOn: 'blur' }"></input>
+          </div>
+        </div>
       </fieldset>
       <fieldset ng-if="!isInvalidDesc()">
         <legend>Custom properties</legend>

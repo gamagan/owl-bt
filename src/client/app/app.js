@@ -1,3 +1,10 @@
+import _ from 'lodash';
+import Toposort from 'toposort-class';
+import d3 from 'd3';
+import io from 'socket.io-client';
+import 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
+import './app.scss'
+
 'use strict';
 
 angular.module('editorApp', [
@@ -27,9 +34,10 @@ angular.module('editorApp', [
       theme: 'minimal-dark'
     };
   })
-  .constant('_', window._) //http://stackoverflow.com/a/23984685
-  .constant('Toposort', window.Toposort) //http://stackoverflow.com/a/23984685
-  .constant('d3', window.d3)
-  .constant('io', window.io)
   .constant('undoStackSize', 100)
+  //TODO: change to imports in files
+  .constant('_', _)
+  .constant('Toposort', Toposort)
+  .constant('d3', d3)
+  .constant('io', io)
   ;

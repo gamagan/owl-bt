@@ -339,3 +339,12 @@ module.exports = {
 - Prevent losing values of invalid properties in property editor form
 - Add highlighting of all tree items with invalid properties
 - Add save confirmation before saving a tree with invalid properties
+
+### 2.0.0
+- Add option to change type of an existing node. (`ctrl+shift+p`->`'core:Set Node Type'` or `rmb`->`'Set Node Type'`) 
+- (breaking change): Fontawesome upgraded to 5.*
+- (chore): Convert from Grunt+Bower+Karma to Webpack+Jest
+
+### 2.1.0
+- Add custom label to node items
+- Add comment to node items

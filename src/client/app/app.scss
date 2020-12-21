@@ -1,8 +1,7 @@
-$icon-font-path: "/bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-$fa-font-path: "/bower_components/font-awesome/fonts";
+$icon-font-path: "/bootstrap-sass/assets/fonts/bootstrap/";
+$fa-font-path: "/font-awesome/fonts";
 
-@import 'bootstrap-sass/assets/stylesheets/bootstrap';
-@import 'font-awesome/scss/font-awesome';
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
 /**
@@ -33,6 +32,7 @@ $node-service-background-color: #5cc690;
 $node-color: white;
 $node-service-color: #333333;
 $node-decorator-color: #333333;
+$node-comment-color: #333333;
 $invalid-node-item-background-color : #C65C5C;
 //context menu
 $context-menu-border-color: #1C2732;
@@ -139,8 +139,6 @@ input.ng-invalid{
   background: $ctrl-input-err-background-color;
 }
 
-// Component styles are injected through grunt
-// injector
 @import 'main/main.scss';
 @import 'tree/commandTopMenu/commandTopMenu.scss';
 @import 'tree/tree.scss';
@@ -149,10 +147,9 @@ input.ng-invalid{
 @import 'tree/treeItemPalette/treeItemPaletteGroup.scss';
 @import 'tree/treeItemPalette/treeItemPaletteItem.scss';
 @import 'tree/treeNodeItemDetails.scss';
-@import 'contextMenu/contextMenu.scss';
-@import 'listSelectDialog/fuzzyList/fuzzyList.scss';
-@import 'listSelectDialog/listSelectDialog.scss';
-@import 'msgPanel/msgPanel.scss';
-@import 'sidePanel/sidePanel.scss';
-@import 'treeMruList/treeMruList.scss';
-// endinjector
+@import '../components/contextMenu/contextMenu.scss';
+@import '../components/listSelectDialog/fuzzyList/fuzzyList.scss';
+@import '../components/listSelectDialog/listSelectDialog.scss';
+@import '../components/msgPanel/msgPanel.scss';
+@import '../components/sidePanel/sidePanel.scss';
+@import '../components/treeMruList/treeMruList.scss';
